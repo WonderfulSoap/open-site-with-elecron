@@ -34,7 +34,7 @@ jobs:
         run: echo "VERSION=${GITHUB_REF_NAME#release/}" >> "$GITHUB_OUTPUT"
 
       - name: Bump package version
-        run: npm version "${{ steps.version.outputs.VERSION }}" --no-git-tag-version
+        run: npm version "${{ steps.version.outputs.VERSION }}" --no-git-tag-version --allow-same-version
 
       - name: Build Linux AppImage — x64
         run: |
@@ -85,7 +85,7 @@ jobs:
           "VERSION=$version" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
 
       - name: Bump package version
-        run: npm version "${{ steps.version.outputs.VERSION }}" --no-git-tag-version
+        run: npm version "${{ steps.version.outputs.VERSION }}" --no-git-tag-version --allow-same-version
 
       - name: Build Windows portable — x64
         shell: pwsh
