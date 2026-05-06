@@ -6,7 +6,7 @@
   "scripts": {
     "start": "env -u ELECTRON_RUN_AS_NODE electron .",
     "pack": "env -u ELECTRON_RUN_AS_NODE electron-builder --dir",
-    "build:win": "env -u ELECTRON_RUN_AS_NODE electron-builder --win nsis --publish never",
+    "build:win": "env -u ELECTRON_RUN_AS_NODE electron-builder --win portable --publish never",
     "build:linux": "env -u ELECTRON_RUN_AS_NODE electron-builder --linux AppImage --publish never"
   },
   "devDependencies": {
@@ -16,6 +16,7 @@
   "build": {
     "appId": "com.example.open-site-with-electron",
     "productName": "OpenSiteWithElectron",
+    "compression": "store",
     "files": [
       "main.js",
       "package.json"
@@ -27,16 +28,12 @@
       "artifactName": "${productName}.${ext}",
       "target": [
         {
-          "target": "nsis",
+          "target": "portable",
           "arch": [
             "x64"
           ]
         }
       ]
-    },
-    "nsis": {
-      "oneClick": false,
-      "allowToChangeInstallationDirectory": true
     },
     "linux": {
       "artifactName": "${productName}.${ext}",
