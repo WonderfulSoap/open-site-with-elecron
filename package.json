@@ -24,6 +24,7 @@
       "output": "dist"
     },
     "win": {
+      "artifactName": "${productName}.${ext}",
       "target": [
         {
           "target": "nsis",
@@ -38,6 +39,7 @@
       "allowToChangeInstallationDirectory": true
     },
     "linux": {
+      "artifactName": "${productName}.${ext}",
       "target": [
         {
           "target": "AppImage",
