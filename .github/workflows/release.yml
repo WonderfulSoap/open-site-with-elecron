@@ -39,17 +39,17 @@ jobs:
       - name: Build Linux AppImage — x64
         run: |
           npx electron-builder --linux AppImage --x64 --publish never
-          cd dist && zip OpenSiteWithElectron-linux-x64.zip *.AppImage && rm *.AppImage
+          cd dist && zip OpenSiteWithElectron-${{ steps.version.outputs.VERSION }}-linux-x64.zip *.AppImage && rm *.AppImage
 
       - name: Build Linux AppImage — arm64
         run: |
           npx electron-builder --linux AppImage --arm64 --publish never
-          cd dist && zip OpenSiteWithElectron-linux-arm64.zip *.AppImage && rm *.AppImage
+          cd dist && zip OpenSiteWithElectron-${{ steps.version.outputs.VERSION }}-linux-arm64.zip *.AppImage && rm *.AppImage
 
       - name: Build Linux AppImage — armv7l
         run: |
           npx electron-builder --linux AppImage --armv7l --publish never
-          cd dist && zip OpenSiteWithElectron-linux-armv7l.zip *.AppImage && rm *.AppImage
+          cd dist && zip OpenSiteWithElectron-${{ steps.version.outputs.VERSION }}-linux-armv7l.zip *.AppImage && rm *.AppImage
 
       - uses: actions/upload-artifact@v4
         with:
@@ -91,21 +91,21 @@ jobs:
         shell: pwsh
         run: |
           npx electron-builder --win portable --x64 --publish never
-          Compress-Archive -Path dist\OpenSiteWithElectron.exe -DestinationPath dist\OpenSiteWithElectron-win-x64.zip
+          Compress-Archive -Path dist\OpenSiteWithElectron.exe -DestinationPath dist\OpenSiteWithElectron-${{ steps.version.outputs.VERSION }}-win-x64.zip
           Remove-Item dist\OpenSiteWithElectron.exe
 
       - name: Build Windows portable — ia32
         shell: pwsh
         run: |
           npx electron-builder --win portable --ia32 --publish never
-          Compress-Archive -Path dist\OpenSiteWithElectron.exe -DestinationPath dist\OpenSiteWithElectron-win-ia32.zip
+          Compress-Archive -Path dist\OpenSiteWithElectron.exe -DestinationPath dist\OpenSiteWithElectron-${{ steps.version.outputs.VERSION }}-win-ia32.zip
           Remove-Item dist\OpenSiteWithElectron.exe
 
       - name: Build Windows portable — arm64
         shell: pwsh
         run: |
           npx electron-builder --win portable --arm64 --publish never
-          Compress-Archive -Path dist\OpenSiteWithElectron.exe -DestinationPath dist\OpenSiteWithElectron-win-arm64.zip
+          Compress-Archive -Path dist\OpenSiteWithElectron.exe -DestinationPath dist\OpenSiteWithElectron-${{ steps.version.outputs.VERSION }}-win-arm64.zip
           Remove-Item dist\OpenSiteWithElectron.exe
 
       - uses: actions/upload-artifact@v4
