@@ -39,9 +39,6 @@ jobs:
       - name: Build Linux AppImage — x64
         run: npx electron-builder --linux AppImage --x64 --publish never
 
-      - name: Build Linux AppImage — ia32
-        run: npx electron-builder --linux AppImage --ia32 --publish never
-
       - name: Build Linux AppImage — arm64
         run: npx electron-builder --linux AppImage --arm64 --publish never
 
